@@ -2,12 +2,12 @@
  * @Author: zhao hong 
  * @Date: 2017-11-03 09:30:55 
  * @Last Modified by: zhao hong
- * @Last Modified time: 2017-11-03 10:37:23
+ * @Last Modified time: 2017-11-15 15:43:04
  */
 
 
 import React, { Component } from 'react';
-import  './bar.less';
+import  '../style/bar.less';
 
 /**
  * 60 --> scrollbar height, see ScrollBar.less     

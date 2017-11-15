@@ -2,13 +2,13 @@
  * @Author: zhao hong 
  * @Date: 2017-11-03 09:31:10 
  * @Last Modified by: zhao hong
- * @Last Modified time: 2017-11-03 10:39:02
+ * @Last Modified time: 2017-11-15 15:42:26
  */
 
 
 import React, { Component } from 'react';
 import Bar from './Bar'
-import './ScrollBar.less';
+import '../style/ScrollBar.less';
 
 /**
  * 

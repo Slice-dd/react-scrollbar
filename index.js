@@ -2,14 +2,14 @@
  * @Author: zhao hong 
  * @Date: 2017-11-03 09:31:26 
  * @Last Modified by: zhao hong
- * @Last Modified time: 2017-11-03 10:47:09
+ * @Last Modified time: 2017-11-15 15:42:43
  */
 
 
 
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import ScrollBar from './ScrollBar';
+import ScrollBar from './js/ScrollBar';
 import style from './index.less';
 
 
