@@ -2,7 +2,7 @@
  * @Author: zhao hong 
  * @Date: 2017-11-03 09:31:10 
  * @Last Modified by: zhao hong
- * @Last Modified time: 2017-11-15 15:42:26
+ * @Last Modified time: 2017-12-21 16:03:24
  */
 
 
@@ -22,7 +22,8 @@ class Scrollbar extends Component {
         state = {
             scrollbarPosition: 0,
             marginTops: 0,
-            isAnimation: true
+            isAnimation: true,
+            scrollBarHeight: 0
         }
     
         onScroll = (e) => {
@@ -48,32 +49,44 @@ class Scrollbar extends Component {
             console.log(e.type);
     
         }
-    
+        
         changeTop = (n) => {
     
             const scrollHeight = this.element.clientHeight - this.props.height;
-    
+            
             this.setState({
                 marginTops: -scrollHeight * n,
                 isAnimation: false
             });
         }
     
-    
         addAnimation = () => {
             this.setState({
                 isAnimation: true
             });
         }
+
+        componentDidMount() {
+            
+            if(this.element) {
+
+                const { height} = this.props;
+
+                const scrollBarHeight = (height / this.element.clientHeight) * height;
+
+               this.setState({scrollBarHeight});
+            }
+        }
+        
     
         render() {
-    
+            
             const { height } = this.props;
-    
-            let { scrollbarPosition, marginTops, isAnimation } = this.state;
-    
-            let position = (height - 60) * scrollbarPosition;
-    
+            
+            let { scrollbarPosition, marginTops, isAnimation, scrollBarHeight } = this.state;
+            
+            let position = (height - scrollBarHeight) * scrollbarPosition;
+            
             return (
                 <div className="scroll" style={{ height: height }}>
                     <div
@@ -83,7 +96,7 @@ class Scrollbar extends Component {
                         className={isAnimation ?"scrollbar" : "scrollbar" + ' ' + "noAnimation"}>
                         {this.props.children}
                     </div>
-                    <Bar height={height} position={position} changeTop={this.changeTop} addAnimation={this.addAnimation} />
+                    <Bar height={height}  scrollBarHeight={scrollBarHeight} position={position} changeTop={this.changeTop} addAnimation={this.addAnimation} />
                 </div>
     
             );

@@ -2,7 +2,7 @@
  * @Author: zhao hong 
  * @Date: 2017-11-03 09:30:55 
  * @Last Modified by: zhao hong
- * @Last Modified time: 2017-11-15 15:43:04
+ * @Last Modified time: 2017-12-21 15:56:18
  */
 
 
@@ -44,13 +44,13 @@ export default  class Bar extends Component {
 
         let scrollHeight = e.clientY - this.dritf;
 
-        const { height } = this.props;
+        const { height, scrollBarHeight } = this.props;
         
-        scrollHeight = scrollHeight < 0 ? 0 : scrollHeight > height - 60 ? height - 60 : scrollHeight;
+        scrollHeight = scrollHeight < 0 ? 0 : scrollHeight > height - scrollBarHeight ? height - scrollBarHeight : scrollHeight;
 
         this.bar.style.top = scrollHeight + 'px';
 
-        let needScrolls = scrollHeight / (this.props.height - 60);
+        let needScrolls = scrollHeight / (height - scrollBarHeight);
 
         this.props.changeTop(needScrolls);
     }
@@ -67,13 +67,13 @@ export default  class Bar extends Component {
 
     render() {
         
-        const { height, position } = this.props;
+        const { height, position, scrollBarHeight } = this.props;
 
         const { isAniamation } = this.state;
 
         return (
             <div style={{ height: height }} className="barparent">
-                <div className={isAniamation ? "bar" : "bar"+ ' ' +"noAnimation"} style={{ top: position }} ref={e => this.bar = e} onMouseDown={this.onMouseDown}></div>
+                <div className={isAniamation ? "bar" : "bar"+ ' ' +"noAnimation"} style={{ top: position, height: scrollBarHeight }} ref={e => this.bar = e} onMouseDown={this.onMouseDown}></div>
             </div>
         );
     }
